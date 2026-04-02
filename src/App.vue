@@ -1,22 +1,10 @@
-<script setup>
-import MeuComponente from './components/MeuComponente.vue';
-import { ref } from 'vue';
-
-const valorMaximo = ref(12)
-const valorMaximoAtingido = ref(false)
-
-function onValorMaximo(atingiuValorMaximo) {
-  if(atingiuValorMaximo) {
-    valorMaximoAtingido.value = true
-  }
-}
-
-</script>
 <template>
-  <h3 v-show="valorMaximoAtingido"> Valor máximo atingido </h3>
-  <MeuComponente :maximo="valorMaximo" @atingiu-valor-maximo="onValorMaximo"><!-- Parâmetros passados para as propriedades(props) do Componente customizado -->
-  </MeuComponente>
-</template>
+  <nav>
+    <router-link to="/">Home</router-link>
+    <router-link to="/cadastro">Cadastrar Disco</router-link>
+  </nav>
 
-<style scoped>
-</style>
+  <div class="container">
+    <router-view />
+  </div>
+</template>
