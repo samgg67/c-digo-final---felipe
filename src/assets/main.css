@@ -63,3 +63,8 @@ input {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+}

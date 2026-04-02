@@ -1,0 +1,35 @@
+{
+  "discos": [
+    {
+      "nome": "Thriller",
+      "artista": "Michael Jackson",
+      "ano": 1982,
+      "id": "1"
+    },
+    {
+      "nome": "Nuvens",
+      "artista": "Tim Maia",
+      "ano": 1982,
+      "id": "msJVQvrcH4w"
+    },
+    {
+      "nome": "Purple Rain",
+      "artista": "Prince",
+      "ano": 1984,
+      "id": "M_QfT02dQYw"
+    },
+    {
+      "nome": "Tuskegee",
+      "artista": "Lionel Richie",
+      "ano": 2011,
+      "id": "JpnzOALghjg"
+    },
+    {
+      "nome": "2014",
+      "artista": "Beyonce",
+      "ano": 2010,
+      "id": "SSyTG9LFi-4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
