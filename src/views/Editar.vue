@@ -6,6 +6,7 @@
       <input v-model="nome" />
       <input v-model="artista" />
       <input v-model="ano" />
+      <input v-model="imagem" />
 
       <button @click="atualizar">Atualizar</button>
     </div>
@@ -24,16 +25,16 @@ const id = route.params.id
 const nome = ref('')
 const artista = ref('')
 const ano = ref('')
-const descricaoArtista = ref('')
-const descricaoAlbum = ref('')
+const imagem = ref ('')
+
+const id = route.params.id
 
 async function carregar() {
   const res = await api.get(`/discos/${id}`)
   nome.value = res.data.nome
   artista.value = res.data.artista
   ano.value = res.data.ano
-  descricaoArtista.value = res.data.descricaoArtista || ''
-  descricaoAlbum.value = res.data.descricaoAlbum || ''
+  imagem.value = res.data.imagem
 }
 
 async function atualizar() {
@@ -41,8 +42,7 @@ async function atualizar() {
     nome: nome.value,
     artista: artista.value,
     ano: Number(ano.value),
-    descricaoArtista: descricaoArtista.value,
-    descricaoAlbum: descricaoAlbum.value
+    imagem: imagem.value,
   })
   alert('Atualizado no JSON!')
   router.push('/')

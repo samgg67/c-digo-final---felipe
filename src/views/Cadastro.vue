@@ -5,10 +5,8 @@
 
       <input v-model="nome" placeholder="Nome do Álbum" />
       <input v-model="artista" placeholder="Artista" />
-      <input v-model="ano" placeholder="Ano de Lançamento" />
-      
-      <textarea v-model="descricaoArtista" placeholder="Sobre o Artista..."></textarea>
-      <textarea v-model="descricaoAlbum" placeholder="Sobre o Álbum..."></textarea>
+      <input v-model="ano" placeholder="Ano" />
+      <input v-model="imagem" placeholder="URL da Imagem" />
 
       <button @click="salvar">Salvar Disco</button>
     </div>
@@ -23,8 +21,7 @@ import api from '@/services/api'
 const nome = ref('')
 const artista = ref('')
 const ano = ref('')
-const descricaoArtista = ref('') 
-const descricaoAlbum = ref('')   
+const imagem = ref('')
 const router = useRouter()
 
 async function salvar() {
@@ -35,11 +32,10 @@ async function salvar() {
 
   // O erro deve estar aqui embaixo:
   await api.post('/discos', {
-    nome: nome.value,              
-    artista: artista.value,        
-    ano: Number(ano.value),   
-    descricaoArtista: descricaoArtista.value, 
-    descricaoAlbum: descricaoAlbum.value       
+    nome: nome.value,
+    artista: artista.value,
+    ano: Number(ano.value),
+    imagem: imagem.value,
   })
 
   alert('Disco cadastrado com sucesso!')
@@ -48,48 +44,104 @@ async function salvar() {
 </script>
 
 <style>
+
+.container {
+  padding: 0px;
+}
+
 .page {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f5f5f5;
+  background: #242424;
+  padding: 10px;
 }
 
 .box {
-  background: white;
+  background: #16427a;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 350px; /* Aumentei um pouco para os textareas */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  width: 750px;
+  align-content: center;
 }
 
-input, textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
+nav {
+  background: #16427a;
+  color: whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  margin-bottom: 40px;
+  text-align: center;
+  color: whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+  width: 98%;
+}
+
+img {
+  width: 90px; 
+  height: 90px; 
+  object-fit: cover; 
   border-radius: 5px;
-  font-family: sans-serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-textarea {
-  height: 80px;
-  resize: none; /* Impede o usuário de bagunçar o layout */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: whitesmoke;
+}
+
+li {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 button {
-  background-color: #6366f1;
-  color: white;
+  padding: 10px 15px;
   border: none;
-  padding: 12px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-button:hover {
-  background-color: #4f46e5;
+button:first-child {
+  background: #3886ed;
+  color: whitesmoke;
+}
+
+button:first-child:hover {
+  background: rgb(32, 92, 170);
+}
+
+button:last-child {
+  background: #c93c4a;
+  color: whitesmoke;
+}
+
+button:last-child:hover {
+  background: #a8333f
+}
+
+.sem-resultados {
+  text-align: center;
+  color: #777;
+  margin-top: 15px;
 }
 </style>
