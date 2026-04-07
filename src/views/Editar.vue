@@ -20,6 +20,7 @@ import api from '@/services/api'
 
 const route = useRoute()
 const router = useRouter()
+const id = route.params.id
 
 const nome = ref('')
 const artista = ref('')
@@ -43,12 +44,9 @@ async function atualizar() {
     ano: Number(ano.value),
     imagem: imagem.value,
   })
-
-  alert('✏️ Disco atualizado com sucesso!')
-
+  alert('Atualizado no JSON!')
   router.push('/')
 }
-
 
 onMounted(carregar)
 </script>

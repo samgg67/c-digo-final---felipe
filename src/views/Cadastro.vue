@@ -3,12 +3,12 @@
     <div class="box">
       <h1>Cadastrar Disco</h1>
 
-      <input v-model="nome" placeholder="Nome" />
+      <input v-model="nome" placeholder="Nome do Álbum" />
       <input v-model="artista" placeholder="Artista" />
       <input v-model="ano" placeholder="Ano" />
       <input v-model="imagem" placeholder="URL da Imagem" />
 
-      <button @click="salvar">Salvar</button>
+      <button @click="salvar">Salvar Disco</button>
     </div>
   </div>
 </template>
@@ -25,6 +25,12 @@ const imagem = ref('')
 const router = useRouter()
 
 async function salvar() {
+  if (!nome.value || !artista.value) {
+    alert('Por favor, preencha o nome e o artista!');
+    return;
+  }
+
+  // O erro deve estar aqui embaixo:
   await api.post('/discos', {
     nome: nome.value,
     artista: artista.value,
@@ -32,7 +38,7 @@ async function salvar() {
     imagem: imagem.value,
   })
 
-  alert('✅ Disco cadastrado com sucesso!')
+  alert('Disco cadastrado com sucesso!')
   router.push('/')
 }
 </script>
